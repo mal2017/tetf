@@ -12,6 +12,14 @@ When developing, run following command from the base directory of this repo to p
 git submodule update --remote <submodule name>
 ```
 
+When developing, run the following command from the base directory of this repo to add a submodule for the first time:
+
+```
+git submodule add git@github.com:mal2017/<repo name>.git subworkflows/<repo name>
+
+git commit -am 'Added subworkflow <repo name> as submodule'
+```
+
 When cloning this repo, use the following:
 
 ```
