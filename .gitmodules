@@ -7,3 +7,6 @@
 [submodule "subworkflows/tetf_dgrp_wgs"]
 	path = subworkflows/tetf_dgrp_wgs
 	url = git@github.com:mal2017/tetf_dgrp_wgs.git
+[submodule "subworkflows/tetf_expression_quant"]
+	path = subworkflows/tetf_expression_quant
+	url = git@github.com:mal2017/tetf_expression_quant.git
