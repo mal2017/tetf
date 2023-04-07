@@ -10,3 +10,6 @@
 [submodule "subworkflows/tetf_expression_quant"]
 	path = subworkflows/tetf_expression_quant
 	url = git@github.com:mal2017/tetf_expression_quant.git
+[submodule "subworkflows/tetf_expression_quant_dataset2"]
+	path = subworkflows/tetf_expression_quant_dataset2
+	url = git@github.com:mal2017/tetf_expression_quant_dataset2.git
