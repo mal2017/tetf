@@ -4,6 +4,7 @@
 [submodule "subworkflows/tetf_tidal"]
 	path = subworkflows/tetf_tidal
 	url = git@github.com:mal2017/tetf_tidal.git
+	branch=main
 [submodule "subworkflows/tetf_dgrp_wgs"]
 	path = subworkflows/tetf_dgrp_wgs
 	url = git@github.com:mal2017/tetf_dgrp_wgs.git
