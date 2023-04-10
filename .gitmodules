@@ -1,6 +1,7 @@
 [submodule "subworkflows/tetf_refs"]
 	path = subworkflows/tetf_refs
 	url = git@github.com:mal2017/tetf_refs.git
+	branch=main
 [submodule "subworkflows/tetf_tidal"]
 	path = subworkflows/tetf_tidal
 	url = git@github.com:mal2017/tetf_tidal.git
@@ -8,12 +9,16 @@
 [submodule "subworkflows/tetf_dgrp_wgs"]
 	path = subworkflows/tetf_dgrp_wgs
 	url = git@github.com:mal2017/tetf_dgrp_wgs.git
+	branch=main
 [submodule "subworkflows/tetf_expression_quant"]
 	path = subworkflows/tetf_expression_quant
 	url = git@github.com:mal2017/tetf_expression_quant.git
+	branch=main
 [submodule "subworkflows/tetf_expression_quant_dataset2"]
 	path = subworkflows/tetf_expression_quant_dataset2
 	url = git@github.com:mal2017/tetf_expression_quant_dataset2.git
+	branch=main
 [submodule "subworkflows/tetf_lm_coex"]
 	path = subworkflows/tetf_lm_coex
 	url = git@github.com:mal2017/tetf_lm_coex.git
+	branch=main
