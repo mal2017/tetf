@@ -22,3 +22,6 @@
 	path = subworkflows/tetf_lm_coex
 	url = git@github.com:mal2017/tetf_lm_coex.git
 	branch=main
+[submodule "subworkflows/tetf_lm_coex_dataset2"]
+	path = subworkflows/tetf_lm_coex_dataset2
+	url = git@github.com:mal2017/tetf_lm_coex_dataset2.git
