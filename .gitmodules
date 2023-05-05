@@ -26,3 +26,11 @@
 	path = subworkflows/tetf_lm_coex_dataset2
 	url = git@github.com:mal2017/tetf_lm_coex_dataset2.git
 	branch=main
+[submodule "subworkflows/tetf_rewiring"]
+	path = subworkflows/tetf_rewiring
+	url = git@github.com:mal2017/tetf_rewiring.git
+	branch = main
+[submodule "subworkflows/tetf_rewiring_dataset2"]
+	path = subworkflows/tetf_rewiring_dataset2
+	url = git@github.com:mal2017/tetf_rewiring_dataset2.git
+	branch = main
