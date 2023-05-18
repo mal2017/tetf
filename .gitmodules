@@ -34,3 +34,6 @@
 	path = subworkflows/tetf_rewiring_dataset2
 	url = git@github.com:mal2017/tetf_rewiring_dataset2.git
 	branch = main
+[submodule "subworkflows/tetf_calderon22"]
+	path = subworkflows/tetf_calderon22
+	url = git@github.com:mal2017/tetf_calderon22.git
