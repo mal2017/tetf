@@ -37,3 +37,4 @@
 [submodule "subworkflows/tetf_calderon22"]
 	path = subworkflows/tetf_calderon22
 	url = git@github.com:mal2017/tetf_calderon22.git
+	branch = main
