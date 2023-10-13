@@ -1,0 +1,151 @@
+import sys
+import peppy
+import glob
+
+
+
+
+subworkflow tidal_wf:
+    workdir:
+        "../subworkflows/tetf_tidal/"
+    snakefile:
+        "../subworkflows/tetf_tidal/workflow/Snakefile"
+
+subworkflow refs_wf:
+    workdir:
+        "../subworkflows/tetf_refs/"
+    snakefile:
+        "../subworkflows/tetf_refs/workflow/Snakefile"
+
+subworkflow wgs_wf:
+    workdir:
+        "../subworkflows/tetf_dgrp_wgs/"
+    snakefile:
+        "../subworkflows/tetf_dgrp_wgs/workflow/Snakefile"
+
+subworkflow dgrp_coex_wf:
+    workdir:
+        "../subworkflows/tetf_lm_coex/"
+    snakefile:
+        "../subworkflows/tetf_lm_coex/workflow/Snakefile"
+
+subworkflow dgrp_coex_d2_wf:
+    workdir:
+        "../subworkflows/tetf_lm_coex_dataset2/"
+    snakefile:
+        "../subworkflows/tetf_lm_coex_dataset2/workflow/Snakefile"
+
+subworkflow tfrnai_wf:
+    workdir:
+        "../subworkflows/tetf_tfrnai/"
+    snakefile:
+        "../subworkflows/tetf_tfrnai/workflow/Snakefile"
+
+subworkflow kd_rna_wf:
+    workdir:
+        "../subworkflows/tetf_kd/"
+    snakefile:
+        "../subworkflows/tetf_kd/workflow/Snakefile"
+
+subworkflow calderon22_wf:
+    workdir:
+        "../subworkflows/tetf_calderon22/"
+    snakefile:
+        "../subworkflows/tetf_calderon22/workflow/Snakefile"
+
+subworkflow basic_chip_wf:
+    workdir:
+        "../subworkflows/tetf_basic_chip/"
+    snakefile:
+        "../subworkflows/tetf_basic_chip/workflow/Snakefile"
+
+subworkflow rewiring_wf:
+    workdir:
+        "../subworkflows/tetf_rewiring/"
+    snakefile:
+        "../subworkflows/tetf_rewiring/workflow/Snakefile"
+
+subworkflow rewiring_d2_wf:
+    workdir:
+        "../subworkflows/tetf_rewiring_dataset2/"
+    snakefile:
+        "../subworkflows/tetf_rewiring_dataset2/workflow/Snakefile"
+
+
+localrules: bundle_upstream
+
+rule bundle_upstream:
+    input:
+        te_fa = refs_wf("results/tidal-anno/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz"),
+        te_fai = refs_wf("results/tidal-anno/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.fai"),
+        te_gzi = refs_wf("results/tidal-anno/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.gzi"),
+        lms = dgrp_coex_wf("results/linear_models/final-models.collected-info.tsv.gz"),
+        male_expr = dgrp_coex_wf("results/linear_models/male/0/expression.tsv.gz"),
+        female_expr = dgrp_coex_wf("results/linear_models/female/0/expression.tsv.gz"),
+        lms_d2 = dgrp_coex_d2_wf("results/linear_models/final-models.collected-info.tsv.gz"),
+        copies = wgs_wf("results/copies/copies.tsv"),
+        dgrp_ins = tidal_wf("results/collected_insertions/DGRP_flies.tsv"),
+        rep_kd_se = kd_rna_wf("results/quantification/vanilla_salmon_tes_transcripts/se.gene.0.rds"),
+        overlaps = tidal_wf("results/overlaps/overlaps.tsv.gz"),
+        ref_ins = refs_wf("results/repeatmasker/reference_insertions.bed"),
+        #rep_dgrp_se = dgrp_coex_wf("results/quantification/vanilla_salmon_tes_transcripts/se.gene.0.rds"),
+        rep_tfrnai_se = tfrnai_wf("results/quantification/vanilla_salmon_tes_transcripts/se.gene.0.rds"),
+        supercells = calderon22_wf("results/supercell/supercells.rds"),
+        calderon_te_lookup = calderon22_wf("results/resources/te_element_lookup.json"),
+        chip_masked_idxstats = basic_chip_wf("results/basic_chip/qc/masked/all_idxstats.txt"),
+        chip_unmasked_stats = basic_chip_wf("results/basic_chip/qc/unmasked/all_stats.txt"),
+        rewiring_female = rewiring_wf("results/rewiring_collected/rewiring.female.rds"),
+        rewiring_male = rewiring_wf("results/rewiring_collected/rewiring.male.rds"),
+        rewiring_female_d2 = rewiring_d2_wf("results/rewiring_collected/rewiring.female.all_minimal_cols.tsv.gz"),
+        rewiring_male_d2 = rewiring_d2_wf("results/rewiring_collected/rewiring.male.all_minimal_cols.tsv.gz"),
+    output:
+        te_fa = "results/upstream/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz",
+        te_fai = "results/upstream/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.fai",
+        te_gzi = "results/upstream/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.gzi",
+        lms = "results/upstream/final-models.collected-info.tsv.gz",
+        male_expr = "results/upstream/male.0.expression.tsv.gz",
+        female_expr = "results/upstream/female.0.expression.tsv.gz",
+        lms_d2 = "results/upstream/final-models.d2.collected-info.tsv.gz",
+        copies = "results/upstream/copies.tsv",
+        dgrp_ins = "results/upstream/DGRP_flies.tsv",
+        rep_kd_se = "results/upstream/kd.se.gene.0.rds",
+        overlaps = "results/upstream/overlaps.tsv.gz",
+        ref_ins = "results/upstream/reference_insertions.bed",
+        ##rep_dgrp_se = "results/upstream/se.gene.0.rds",
+        rep_tfrnai_se = "results/upstream/tfrnai.se.gene.0.rds",
+        supercells = "results/upstream/calderon22_supercells.rds",
+        calderon_te_lookup = "results/upstream/te_element_lookup.json",
+        chip_masked_idxstats = "results/upstream/masked_idxstats.txt",
+        chip_unmasked_stats = "results/upstream/unmasked_all_stats.txt",
+        rewiring_female = "results/upstream/rewiring.female.rds",
+        rewiring_male = "results/upstream/rewiring.male.rds",
+        rewiring_female_d2 = "results/upstream/rewiring_d2.female.all_minimal_cols.tsv.gz",
+        rewiring_male_d2 = "results/upstream/rewiring_d2.male.all_minimal_cols.tsv.gz",
+    shell:
+        """
+        cp {input.te_fa} {output.te_fa}
+        cp {input.te_fai} {output.te_fai}
+        cp {input.te_gzi} {output.te_gzi}
+
+        cp {input.lms} {output.lms}
+        cp {input.male_expr} {output.male_expr}
+        cp {input.female_expr} {output.female_expr}
+        cp {input.lms_d2} {output.lms_d2}
+        cp {input.copies} {output.copies}
+        cp {input.dgrp_ins} {output.dgrp_ins}
+        cp {input.rep_kd_se} {output.rep_kd_se}
+        cp {input.overlaps} {output.overlaps}
+        cp {input.ref_ins} {output.ref_ins}
+
+        cp {input.rep_tfrnai_se} {output.rep_tfrnai_se}
+        cp {input.supercells} {output.supercells}
+        cp {input.calderon_te_lookup} {output.calderon_te_lookup}
+        cp {input.chip_masked_idxstats} {output.chip_masked_idxstats}
+        cp {input.chip_unmasked_stats} {output.chip_unmasked_stats}
+
+        cp {input.rewiring_female} {output.rewiring_female}
+        cp {input.rewiring_male} {output.rewiring_male}
+        cp {input.rewiring_female_d2} {output.rewiring_female_d2}
+        cp {input.rewiring_male_d2} {output.rewiring_male_d2}
+        """
+

@@ -38,3 +38,19 @@
 	path = subworkflows/tetf_calderon22
 	url = git@github.com:mal2017/tetf_calderon22.git
 	branch = main
+[submodule "subworkflows/tetf_kd"]
+	path = subworkflows/tetf_kd
+	url = git@github.com:mal2017/tetf_kd.git
+	branch = main
+[submodule "subworkflows/tetf_tfrnai"]
+	path = subworkflows/tetf_tfrnai
+	url = git@github.com:mal2017/tetf_tfrnai.git
+	branch = main
+[submodule "subworkflows/tetf_basic_chip"]
+	path = subworkflows/tetf_basic_chip
+	url = git@github.com:mal2017/tetf_basic_chip.git
+	branch = main
+[submodule "subworkflows/tetf_csem_mosaics"]
+	path = subworkflows/tetf_csem_mosaics
+	url = git@github.com:mal2017/tetf_csem_mosaics.git
+	branch = main

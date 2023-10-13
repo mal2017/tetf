@@ -26,3 +26,14 @@ When cloning this repo, use the following:
 git clone --recurse-submodules <this repo>
 ```
 
+When working on code in submodules, go to the submodule and git add/commit changes as usual.
+
+Then push, but if on a detached head you may get a warning message. Then you can push it to its remote by
+
+```bash
+git push origin HEAD:main
+```
+
+Then return to main directory and git add the subdirectory containing the submodule.
+
+Commit and push as normal.
