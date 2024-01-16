@@ -54,3 +54,6 @@
 	path = subworkflows/tetf_csem_mosaics
 	url = git@github.com:mal2017/tetf_csem_mosaics.git
 	branch = main
+[submodule "subworkflows/tetf_ripseq"]
+	path = subworkflows/tetf_ripseq
+	url = git@github.com:mal2017/tetf_ripseq.git
