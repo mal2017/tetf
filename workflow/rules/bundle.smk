@@ -1,4 +1,4 @@
-localrules: bundle_refs_results, bundle_lm_results, bundle_dataset2_lm_results, bundle_wgs_results, bundle_tidal_results, bundle_kd_results, bundle_3rd_party_tfrnai_results, bundle_calderon22_results, bundle_basic_chipseq_results, bundle_csem_chipseq_results
+localrules: bundle_refs_results, bundle_lm_results, bundle_dataset2_lm_results, bundle_wgs_results, bundle_tidal_results, bundle_kd_results, bundle_3rd_party_tfrnai_results, bundle_calderon22_results, bundle_basic_chipseq_results, bundle_csem_chipseq_results, bundle_unr_ripseq_results
 
 rule bundle_refs_results:
     input:
@@ -143,4 +143,14 @@ rule bundle_csem_chipseq_results:
         cp -r {input.mosaics} {output.mosaics}
         cp {input.bigwigs}/*log2ratio.bw {output.bigwigs}
         cp -r {input.sea} {output.sea}
+        """
+
+rule bundle_unr_ripseq_results:
+    input:
+        unr_ripseq = unr_ripseq_wf("results/star-se-counts/masked-genome-plus-tes/combined.ReadsPerGene.out.tab")
+    output:
+        unr_ripseq = "results/upstream/unr_ripseq_counts.tsv.gz"
+    shell:
+        """
+        gzip -c {input.unr_ripseq} > {output.unr_ripseq}
         """

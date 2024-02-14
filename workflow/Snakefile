@@ -62,6 +62,12 @@ subworkflow basic_chip_wf:
     snakefile:
         "../subworkflows/tetf_basic_chip/workflow/Snakefile"
 
+subworkflow unr_ripseq_wf:
+    workdir:
+        "../subworkflows/tetf_ripseq/"
+    snakefile:
+        "../subworkflows/tetf_ripseq/workflow/Snakefile"
+
 include: "rules/bundle.smk"
 
 
@@ -77,3 +83,4 @@ rule all:
         rules.bundle_basic_chipseq_results.output,
         rules.bundle_tidal_results.output,
         rules.bundle_csem_chipseq_results.output,
+        rules.bundle_unr_ripseq_results.output,
