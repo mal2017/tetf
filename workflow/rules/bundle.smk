@@ -6,17 +6,26 @@ rule bundle_refs_results:
         te_fai = refs_wf("results/tidal-anno/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.fai"),
         te_gzi = refs_wf("results/tidal-anno/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.gzi"),
         ref_ins = refs_wf("results/repeatmasker/reference_insertions.bed"),
+        gtf = refs_wf("results/combined-anno/transcripts-plus-tes.gtf"),
+        tx2id = refs_wf("results/combined-anno/transcripts-plus-tes.tx2id.tsv"),
+        tx2symbol = refs_wf("results/combined-anno/transcripts-plus-tes.tx2symbol.tsv"),
     output:
         te_fa = "results/upstream/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz",
         te_fai = "results/upstream/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.fai",
         te_gzi = "results/upstream/Tidalbase_transposon_sequence.dmel.fixed.sensechecked.fa.gz.gzi",
         ref_ins = "results/upstream/reference_insertions.bed",
+        gtf = "results/upstream/transcripts-plus-tes.gtf",
+        tx2id = "results/upstream/transcripts-plus-tes.tx2id.tsv",
+        tx2symbol = "results/upstream/transcripts-plus-tes.tx2symbol.tsv",
     shell:
         """
         cp {input.te_fa} {output.te_fa}
         cp {input.te_fai} {output.te_fai}
         cp {input.te_gzi} {output.te_gzi}
         cp {input.ref_ins} {output.ref_ins}
+        cp {input.gtf} {output.gtf}
+        cp {input.tx2id} {output.tx2id}
+        cp {input.tx2symbol} {output.tx2symbol}
         """
  
 rule bundle_lm_results:
